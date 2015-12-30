@@ -25,44 +25,44 @@ public class CustomerServiceTest {
 
     @Before
     public void init() throws Exception {
-
+        // TODO 初始化数据库
     }
 
     @Test
     public void testGetCustomerList() throws Exception {
         List<Customer> customerList = customerService.getCustomerList("");
-        Assert.assertEquals(2,customerList.size());
+        Assert.assertEquals(2, customerList.size());
     }
 
     @Test
     public void testGetCustomer() throws Exception {
-        long id=1;
-        Customer customer=new CustomerService().getCustomer(id);
+        long id = 1;
+        Customer customer = new CustomerService().getCustomer(id);
         Assert.assertNotNull(customer);
     }
 
     @Test
     public void testCreateCustomer() throws Exception {
-        Map<String,Object> fieldMap=new HashMap<String, Object>();
-        fieldMap.put("name","customer100");
-        fieldMap.put("contact","John");
-        fieldMap.put("telephone","18474838849");
+        Map<String, Object> fieldMap = new HashMap<String, Object>();
+        fieldMap.put("name", "customer100");
+        fieldMap.put("contact", "John");
+        fieldMap.put("telephone", "18474838849");
         boolean result = customerService.createCustomer(fieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
     public void testUpdateCustomer() throws Exception {
-        long id=1;
-        Map<String,Object> fieldMap=new HashMap<String, Object>();
-        fieldMap.put("contact","Eric");
-        boolean result = customerService.updateCustomer(id,fieldMap);
+        long id = 1;
+        Map<String, Object> fieldMap = new HashMap<String, Object>();
+        fieldMap.put("contact", "Eric");
+        boolean result = customerService.updateCustomer(id, fieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
     public void testDeleteCustomer() throws Exception {
-        long id=1;
+        long id = 1;
         boolean result = customerService.deleteCustomer(id);
         Assert.assertTrue(result);
     }
