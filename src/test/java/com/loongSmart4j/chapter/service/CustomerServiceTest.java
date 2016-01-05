@@ -1,10 +1,15 @@
 package com.loongSmart4j.chapter.service;
 
+import com.loongSmart4j.chapter.helper.DatabaseHelper;
 import com.loongSmart4j.chapter.model.Customer;
+import jdk.nashorn.internal.objects.annotations.Where;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +30,13 @@ public class CustomerServiceTest {
 
     @Before
     public void init() throws Exception {
-        // TODO 初始化数据库
+        String file = "sql/customer_init.sql";
+        DatabaseHelper.executeSqlFile(file);
     }
 
     @Test
     public void testGetCustomerList() throws Exception {
-        List<Customer> customerList = customerService.getCustomerList("");
+        List<Customer> customerList = customerService.getCustomerList();
         Assert.assertEquals(2, customerList.size());
     }
 
